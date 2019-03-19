@@ -7,5 +7,5 @@ This script will take whatever version of Jamf Pro tools installed on a Mac and 
 
 ![alt text](/images/packaged_preview.png)
 
-#### Disable Non-Admins from Executing
+#### Restrict Non-Admins from Executing
 If you want only admins to read/execute the resulting installed application you can change `allowNonAdminToReadOrExecute="true"` to `allowNonAdminToReadOrExecute="false"`.
