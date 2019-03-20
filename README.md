@@ -8,9 +8,10 @@ This script will take whatever version of Jamf Pro tools installed on a Mac and 
 
 ### Features
 - Creates individual packages for each Jamf Pro component app (Jamf Admin.app, Jamf Imaging.app, Jamf Remote.app, Composer.app, and Recon.app)
-- When one of the packages is istalled, the corresponding Casper Suite app will be removed
+- When one of the resulting packages is installed, the corresponding Casper Suite app will be removed
 - Disable the automatic relocation of the Jamf apps to the `/Applications/Casper\ Suite` directory
-- Fix permissions you usually get when packaging with Composer.app where icons don't show up for an installed Jamf app
+- Once all Casper Suite apps are removed the `/Applications/Casper\ Suite` directory is removed
+- Fix permissions issues get when packaging with Composer.app (icons for Jamf apps don't display properly)
 - Allows for specifying whether or not non-admins can execute the applications
 
 ![alt text](/images/packaged_preview.png)
