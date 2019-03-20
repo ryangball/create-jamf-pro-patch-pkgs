@@ -6,6 +6,8 @@ Patch Management within Jamf Pro requires individual applications when patching 
 
 This script will take whatever version of Jamf Pro tools installed on a Mac and package them up individually and reveal the packages in Finder.
 
+![alt text](/images/packaged_preview.png)
+
 ### Features
 - Creates individual packages for each Jamf Pro component app (Jamf Admin.app, Jamf Imaging.app, Jamf Remote.app, Composer.app, and Recon.app)
 - When one of the resulting packages is installed, the corresponding Casper Suite app will be removed
@@ -13,8 +15,6 @@ This script will take whatever version of Jamf Pro tools installed on a Mac and 
 - Once all Casper Suite apps are removed the `/Applications/Casper\ Suite` directory is removed
 - Fix permissions issues get when packaging with Composer.app (icons for Jamf apps don't display properly)
 - Allows for specifying whether or not non-admins can execute the applications
-
-![alt text](/images/packaged_preview.png)
 
 ### Restrict Non-Admins from Executing
 If you want only admins to read/execute the resulting installed application you can change `allowNonAdminToReadOrExecute="true"` to `allowNonAdminToReadOrExecute="false"`.
