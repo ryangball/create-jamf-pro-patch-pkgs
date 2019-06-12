@@ -39,7 +39,7 @@ for application in "${applications[@]}"; do
     mkdir -p "$tempDir/build"
 
     echo "Staging $application.app for packaging..."
-    rsync -aX "/Applications/Jamf Pro" "$workingDir/files/" --include "$application.app" --exclude '*.app'
+    rsync -aE "/Applications/Jamf Pro" "$workingDir/files/" --include "$application.app" --exclude '*.app'
 
 # # Create the preinstall script for the PKG to ensure that Casper Suite app counterparts are removed
 cat << EOF > "$workingDir/scripts/preinstall"
