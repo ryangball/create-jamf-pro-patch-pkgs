@@ -1,6 +1,8 @@
 #!/bin/bash
 # Written by Ryan Ball
 
+rsyncVersion=$(rsync --version | grep version | sed -ne 's/[^0-9]*\(\([0-9]\.\)\{0,4\}[0-9][^.]\).*/\1/p')
+
 tempDir="/private/tmp/jamfpro"
 # The below variable can be set to false to restrict non-admin users from reading or executing the application
 # Otherwise you can leave blank or set to true to allow all users to read and execute the application
@@ -39,7 +41,12 @@ for application in "${applications[@]}"; do
     mkdir -p "$tempDir/build"
 
     echo "Staging $application.app for packaging..."
-    rsync -aE "/Applications/Jamf Pro" "$workingDir/files/" --include "$application.app" --exclude '*.app'
+    # Account for both shipped and externally installed versions of rsync
+    if [[ "$rsyncVersion" == 2* ]]; then
+        rsync -aE "/Applications/Jamf Pro" "$workingDir/files/" --include "$application.app" --exclude '*.app'
+    elif [[ "$rsyncVersion" == 3* ]]; then
+        rsync -aX "/Applications/Jamf Pro" "$workingDir/files/" --include "$application.app" --exclude '*.app'
+    fi
 
 # # Create the preinstall script for the PKG to ensure that Casper Suite app counterparts are removed
 cat << EOF > "$workingDir/scripts/preinstall"
